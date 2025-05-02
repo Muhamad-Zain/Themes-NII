@@ -1,0 +1,17 @@
+.bg{
+    background-image: url('/assets/img/bg-2.jpeg');
+    height: 200auto;
+    padding-bottom: 10%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.bg::after{
+    content: "";
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* z-index: 1; */
+    top: 0;
+}

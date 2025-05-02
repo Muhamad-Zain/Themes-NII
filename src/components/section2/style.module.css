@@ -1,0 +1,33 @@
+.bg{
+    /* background-image: url('/assets/img/couple.png'); */
+    /* background-size: cover; */
+    height: 100vh;
+    background-color: #f0cbaa;
+    width: 100%;
+    /* overflow: hidden;
+    background-position: center; */
+    /* position: relative; */
+}
+.afterBg{
+    background-image: url('/assets/img/couple.png');
+    background-size: cover;
+    height: 65vh;
+    top: 35vh;
+    /* z-index: 10; */
+    /* background-color: black; */
+    /* width: 100%; */
+    background-position: center;
+    filter:drop-shadow( 2px  2px #0a0a0a);
+    /* filter:drop-shadow( 2px 6px 2px black); */
+    position: relative;
+}
+.afterBg::after{
+    content: ""; /* Harus ada untuk pseudo-element */
+    position: absolute; /* Memposisikan overlay di atas gambar */
+    /* background-color:linear-gradient(to bottom, black, transparent); */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    height: 80%;
+    /* top: 30vh; */
+    bottom: 0;
+    width: 100%;
+}
