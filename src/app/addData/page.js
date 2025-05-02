@@ -48,7 +48,7 @@ export default function AddData() {
           await addDataToFirebase(id,data)
           // setData('')
           setLoading(false)
-          setParams(`https://start-1-ecru.vercel.app/${id}`)
+          setParams(`https://themes-nii.vercel.app/${id}`)
         } catch (error) {
           console.log(error);
           
