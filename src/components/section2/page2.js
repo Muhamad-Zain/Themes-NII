@@ -21,7 +21,7 @@ export default function Page2 ({data}){
 const renderer = ({days, hours, minutes, seconds, completed }) => {
   if (completed) {
     // Render a completed state
-    return (<span>Hari Penikahan Telah Tiba!!</span>);
+    return (<span className="text-white">Hari Penikahan Telah Tiba!!</span>);
   } else {
     // Render a countdown
     return (

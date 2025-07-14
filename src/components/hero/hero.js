@@ -32,6 +32,49 @@ export default function Hero({id, name}) {
     const [bgToggle, setBgTogle] = useState('bg-black')
     const [check, setCheck] = useState(false)
 
+    useEffect(() => {
+        const getData = async () => {
+            const data = await fetchWeddingData(id)
+            setWeddingData(data)
+            setLoading(false)
+
+        }
+        getData()
+        const checkScreen = () => {
+            if(window.innerWidth > 400){
+                setCheck(!check)
+            }
+
+        } 
+        checkScreen()
+        window.addEventListener('resize', checkScreen)
+        return () => window.removeEventListener('resize', checkScreen)
+    },[id])
+    useEffect(() => {
+
+        const scrollToTop = () => {
+            window.scrollTo({top: 0, left: 0, behavior: 'auto'})
+        }
+        window.addEventListener('load', scrollToTop)
+        window.addEventListener('beforeunload', scrollToTop)
+
+        const handleResize = () => {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`)
+        }
+        handleResize()
+        if(isHidden){
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
+       
+        return() => {
+            document.body.style.overflow = '';
+            window.addEventListener('load', scrollToTop)
+            window.addEventListener('beforeunload', scrollToTop)
+        }
+    },[isHidden])
 
     const togleScroll = (id) => {
         const scrollView = document.getElementById(id)
@@ -64,43 +107,7 @@ export default function Hero({id, name}) {
           }, 100); 
     }
 
-    useEffect(() => {
-        const getData = async () => {
-            const data = await fetchWeddingData(id)
-            setWeddingData(data)
-            setLoading(false)
-
-        }
-        getData()
-        const checkScreen = () => {
-            if(window.innerWidth > 400){
-                setCheck(!check)
-            }
-
-        } 
-        checkScreen()
-        window.addEventListener('resize', checkScreen)
-        return () => window.removeEventListener('resize', checkScreen)
-    },[id])
-    useEffect(() => {
-
-        window.scrollTo(0,0)
-
-        const handleResize = () => {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`)
-        }
-        handleResize()
-        if(isHidden){
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = 'auto'
-        }
-       
-        return() => {
-            document.body.style.overflow = '';
-        }
-    },[isHidden])
+    
 
     
     return(
@@ -118,19 +125,6 @@ export default function Hero({id, name}) {
                 <section className='max-w-[400px] m-auto'>
                     {loading ? (
                         <section className='h-screen relative z-30 flex justify-center items-center bg-black w-full m-auto text-xl'>
-                            <div className='absolute  m-auto z-30'>
-                                {/* <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="75"
-                                    height="75"
-                                    viewBox="0 0 100 100"
-                                    fill="none"
-                                    className={style.loader}
-                                >
-                                    <circle cx="50" cy="50" r="45" stroke="#00000" strokeWidth="5" />
-                                    <circle cx="50" cy="50" r="45" stroke="#3498db" strokeWidth="5" strokeDasharray="100" strokeDashoffset="75" className="animate-loader" />
-                                </svg> */}
-                            </div>
                             <div className={style.bubbleContainer}>
                                 <div className={style.bubble}></div>
                                 <div className={style.bubble}></div>
