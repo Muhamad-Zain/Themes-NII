@@ -31,30 +31,9 @@ export default function Page6({data, propsid}) {
         navigator.clipboard.writeText(rek)
         setStatus2(true)
         setTimeout(() => {
-            setStatus(false)
+            setStatus2(false)
         }, 2000);
     }    
-    // const giftStatus = data?.gift?.gift
-    // if (giftStatus === true) {
-    //     setGift(true)
-    // }   
-    // const copyRekening = (rek, index) => {
-    //     navigator.clipboard.writeText(rek)
-    //     .then(()=> {
-    //         let statusCoppy = [...copied]
-    //         statusCoppy[index] = true
-    //         setCopied(statusCoppy)
-    //         setTimeout(() => {
-    //             let reset = [...statusCoppy]
-    //             reset[index] = false
-    //             setCopied(reset)
-    //         }, 1000);
-    //     }).catch(err => {
-    //         console.log('coppied error',err);
-            
-    //     })
-    // }
-    
 
     return(
         <section className={style.bg}>
